@@ -1,0 +1,333 @@
+/* Estilos Generales y Tema Oscuro */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    background-color: #121212;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+/* --- BOTÓN HAMBURGUESA --- */
+/* Oculto en PC por defecto */
+.btn-hamburguesa {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    background: rgba(20, 20, 20, 0.8);
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.btn-hamburguesa svg {
+    width: 28px;
+    height: 28px;
+    color: #fff;
+}
+
+.btn-hamburguesa:hover {
+    background: rgba(0, 255, 136, 0.2);
+    border-color: #00ff88;
+}
+
+.btn-hamburguesa:hover svg {
+    color: #00ff88;
+}
+
+/* --- PANEL IZQUIERDO (Compañeros con Video) --- */
+.menu-compañeros {
+    width: 30%;
+    height: 100vh;
+    position: relative;
+    overflow-y: auto;
+    border-right: 2px solid #333;
+    transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+.overlay-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+}
+
+.lista-nombres {
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu-compañeros a {
+    display: block;
+    text-decoration: none;
+    color: #e0e0e0;
+    padding: 12px 20px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    border-left: 4px solid transparent;
+}
+
+.menu-compañeros a:hover {
+    color: #fff;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.15);
+    border-left: 4px solid #00ff88;
+    transform: translateX(10px) scale(1.02);
+    box-shadow: 0 4px 15px rgba(0, 255, 136, 0.2);
+}
+
+/* --- PANEL CENTRAL (Contenido) --- */
+.mensajes-principal {
+    width: 70%;
+    height: 100vh;
+    padding: 50px;
+    overflow-y: auto;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    scroll-behavior: smooth;
+}
+
+.header-principal {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header-principal h2 {
+    font-size: 1.5rem;
+    color: #888;
+    letter-spacing: 2px;
+}
+
+.header-principal h1 {
+    font-size: 4rem;
+    text-transform: uppercase;
+    background: linear-gradient(45deg, #00ff88, #00b3ff);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 10px 0;
+    text-shadow: 0px 5px 15px rgba(0, 255, 136, 0.2);
+}
+
+.descripcion-texto {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 25px;
+    border-radius: 15px;
+    border-left: 5px solid #00b3ff;
+    margin-bottom: 50px;
+    line-height: 1.6;
+    font-size: 1.1rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* --- SECCIÓN VIDEOS E IMÁGENES --- */
+.galerias-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.tarjeta-galeria {
+    flex: 1;
+    background: #222;
+    border-radius: 20px;
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #333;
+}
+
+.tarjeta-galeria:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+}
+
+.tarjeta-galeria h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.btn-ver-mas {
+    display: inline-block;
+    padding: 10px 25px;
+    background: transparent;
+    color: #fff;
+    text-decoration: none;
+    border: 2px solid #00ff88;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-ver-mas:hover {
+    background: #00ff88;
+    color: #000;
+    box-shadow: 0 0 15px #00ff88;
+}
+
+.tarjeta-img {
+    border-bottom: 4px solid #ff0077;
+}
+.tarjeta-img .btn-ver-mas {
+    border-color: #ff0077;
+}
+.tarjeta-img .btn-ver-mas:hover {
+    background: #ff0077;
+    box-shadow: 0 0 15px #ff0077;
+}
+
+.tarjeta-vid {
+    border-bottom: 4px solid #00b3ff;
+}
+
+/* --- CUADRITO DE CONTACTO MAGICO --- */
+#cuadro-contacto {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(20, 20, 20, 0.9);
+    border: 1px solid #444;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    text-align: center;
+    font-size: 0.9rem;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#cuadro-contacto.desvanecido {
+    opacity: 0;
+    transform: translateY(20px);
+    visibility: hidden;
+}
+
+#cuadro-contacto strong {
+    color: #00ff88;
+    display: block;
+    margin-top: 5px;
+    font-size: 1.1rem;
+}
+
+/* Efecto Fade in para los elementos al hacer scroll */
+.fade-element {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-element.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Capa oscura de fondo para móviles al abrir el menú */
+.overlay-mobile {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 800;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #111; }
+::-webkit-scrollbar-thumb { background: #444; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #00ff88; }
+
+/* ==========================================================================
+   DISEÑO RESPONSIVE (MÓVILES) - El estilo tipo Snaptube
+   ========================================================================== */
+@media (max-width: 900px) {
+    /* Mostramos el botón de hamburguesa */
+    .btn-hamburguesa {
+        display: block;
+    }
+
+    /* Modificamos el menú lateral para que esté oculto por defecto */
+    .menu-compañeros {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 300px; /* Ancho del menú desplegable */
+        max-width: 80%;
+        height: 100vh;
+        z-index: 900;
+        transform: translateX(-100%); /* Lo esconde fuera de la pantalla */
+        border-right: none;
+        box-shadow: 5px 0 25px rgba(0,0,0,0.8);
+    }
+
+    /* Clase que se añade con JS para mostrar el menú */
+    .menu-compañeros.activo {
+        transform: translateX(0);
+    }
+
+    /* El contenido principal ocupa el 100% de la pantalla */
+    .mensajes-principal {
+        width: 100%;
+        padding: 80px 20px 40px 20px; /* Espacio superior para el botón de hamburguesa */
+    }
+
+    .header-principal h1 {
+        font-size: 2.5rem;
+    }
+
+    /* Las tarjetas se apilan una sobre otra en móviles */
+    .galerias-container {
+        flex-direction: column;
+    }
+
+    /* Ocultamos el cuadro de contacto en móviles para no molestar, o lo hacemos más pequeño */
+    #cuadro-contacto {
+        bottom: 20px;
+        right: 20px;
+        font-size: 0.8rem;
+        padding: 10px;
+    }
+
+    /* Mostramos la capa oscura de fondo si el menú está activo */
+    .overlay-mobile.activo {
+        display: block;
+        opacity: 1;
+    }
+}

@@ -1,0 +1,212 @@
+/* --- ESTILOS GENERALES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #121212; /* Fondo oscuro */
+    color: #ffffff;
+    padding: 20px;
+    padding-bottom: 100px; /* Espacio extra abajo para que se pueda hacer scroll */
+}
+
+/* --- BOTÓN VOLVER --- */
+.btn-volver {
+    display: inline-block;
+    color: #00ff88;
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    border: 1px solid #00ff88;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-volver:hover {
+    background: #00ff88;
+    color: #121212;
+}
+
+/* --- CABECERA --- */
+.cabecera-galeria {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.cabecera-galeria h1 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    background: linear-gradient(45deg, #00ff88, #00b3ff);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+}
+
+.cabecera-galeria p {
+    color: #aaa;
+    font-size: 1.2rem;
+}
+
+/* --- LA CUADRÍCULA DE IMÁGENES (GRID) --- */
+.galeria-grid {
+    display: grid;
+    /* Esto hace la magia: crea columnas automáticas que se adaptan al PC o Celular */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px; /* Separación entre los cuadros */
+    max-width: 1200px;
+    margin: 0 auto; /* Centra la galería */
+}
+
+/* --- CADA CUADRO DE IMAGEN --- */
+.cuadro-imagen {
+    background-color: #222;
+    border: 3px solid #333; /* El borde del cuadro que pediste */
+    border-radius: 12px;
+    overflow: hidden; /* Para que la imagen no se salga de los bordes redondeados */
+    height: 250px; /* Altura fija para que todos los cuadros sean iguales */
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto al pasar el mouse por encima del cuadro */
+.cuadro-imagen:hover {
+    transform: translateY(-10px); /* Salta un poquito hacia arriba */
+    border-color: #00b3ff; /* El borde cambia a azul brillante */
+    box-shadow: 0 10px 25px rgba(0, 179, 255, 0.3);
+}
+
+/* --- LA IMAGEN DENTRO DEL CUADRO --- */
+.cuadro-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Hace que la imagen llene el cuadro sin aplastarse ni deformarse */
+    transition: transform 0.5s ease;
+}
+
+/* Efecto de zoom a la foto al pasar el mouse */
+.cuadro-imagen:hover img {
+    transform: scale(1.1);
+}
+
+/* --- CUADRO DE CONTACTO FLOTANTE --- */
+#cuadro-flotante {
+    position: fixed;
+    bottom: 30px;
+    left: 30px; /* Colocado a la izquierda como en tu dibujo en Paint */
+    background: rgba(20, 20, 20, 0.9);
+    border: 2px solid #444;
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    text-align: center;
+    font-size: 1rem;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    
+    /* Transiciones para desaparecer suavemente */
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+#cuadro-flotante strong {
+    color: #ff0077; /* Un color llamativo para el número */
+    display: block;
+    margin-top: 5px;
+    font-size: 1.2rem;
+}
+
+/* Clase que se añade con Javascript cuando haces scroll */
+#cuadro-flotante.oculto {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-30px); /* Se esconde deslizándose hacia la izquierda */
+}
+
+/* --- RESPONSIVE PARA CELULARES --- */
+@media (max-width: 600px) {
+    .cabecera-galeria h1 {
+        font-size: 2rem;
+    }
+    
+    /* En celular, el cuadro flotante lo hacemos más pequeño */
+    #cuadro-flotante {
+        bottom: 20px;
+        left: 20px;
+        font-size: 0.8rem;
+        padding: 10px 15px;
+    }
+    
+    #cuadro-flotante strong {
+        font-size: 1rem;
+    }
+}
+/* --- ESTILOS DE LA GALERÍA --- */
+.cuadro-imagen img {
+    cursor: pointer; /* Hace que aparezca la manito al pasar el mouse */
+    transition: transform 0.3s ease;
+}
+
+.cuadro-imagen img:hover {
+    transform: scale(1.03); /* Pequeño efecto de zoom al pasar el mouse */
+}
+
+/* --- ESTILO DEL VISOR FLOTANTE CENTRAL --- */
+#visor-flotante {
+    position: fixed; /* Se clava en la pantalla */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1); /* Centrado perfecto */
+    z-index: 3000; /* Por encima de todo lo demás */
+    
+    background-color: #1a1a1a; /* Un marco oscuro muy fino */
+    padding: 8px;
+    border-radius: 15px; /* Bordes redondeados del cuadro flotante */
+    
+    /* Increíble efecto de sombra para que parezca que flota sobre tu HTML */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 179, 255, 0.2);
+    
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+/* Clase para ocultarlo */
+#visor-flotante.oculto {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -50%) scale(0.85); /* Efecto de que se achica al cerrarse */
+}
+
+/* La imagen ampliada dentro del cuadro */
+#imagen-ampliada {
+    display: block;
+    max-width: 85vw;  /* Evita que se salga de la pantalla en celulares */
+    max-height: 80vh; /* Evita que se salga a lo alto */
+    border-radius: 10px; /* Bordes redondeados también para la foto */
+}
+
+/* Botón "X" para cerrar */
+#cerrar-visor {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background-color: #ff0077; /* Color llamativo */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    font-size: 24px;
+    line-height: 35px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+#cerrar-visor:hover {
+    background-color: #ff3399;
+    transform: scale(1.1); /* Crece un poquito el botón */
+}

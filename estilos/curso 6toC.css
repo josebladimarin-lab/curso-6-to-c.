@@ -1,0 +1,250 @@
+/* Reset básico para asegurar consistencia en todos los dispositivos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* Fuente formal y limpia */
+}
+
+body, html {
+    height: 100%;
+    background-color: #1a1a1a; /* Fondo de respaldo si falla el video */
+    overflow-x: hidden;
+}
+
+/* ========================================= */
+/* FONDO DE VIDEO Y CAPA OSCURA              */
+/* ========================================= */
+.video-fondo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -2;
+    object-fit: cover; /* Asegura que cubra la pantalla sin deformarse */
+}
+
+.capa-oscura {
+    position: fixed; /* o absolute, dependiendo de tu diseño */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* El 0.6 es la transparencia */
+    z-index: 0; 
+}
+
+/* ========================================= */
+/* ESTRUCTURA PRINCIPAL                      */
+/* ========================================= */
+.contenedor-principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    color: #ffffff;
+    text-align: center;
+}
+
+header {
+    margin-bottom: 2rem;
+    max-width: 700px;
+}
+
+header h1 {
+    font-size: 2.8rem;
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
+}
+
+header p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #d1d1d1;
+    font-weight: 300;
+}
+
+/* ========================================= */
+/* CAJA DE LOGIN (ESTILO GLASSMORPHISM)      */
+/* ========================================= */
+.login-box {
+    background: rgba(255, 255, 255, 0.08); /* Fondo semi-transparente */
+    backdrop-filter: blur(12px); /* Efecto cristal borroso */
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 3rem 2rem;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.login-box h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    letter-spacing: 1px;
+}
+
+/* ========================================= */
+/* FORMULARIO E INPUTS                       */
+/* ========================================= */
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin: 1.5rem 0;
+}
+
+.formulario p {
+    font-size: 0.85rem;
+    color: #aaaaaa;
+    text-align: left;
+    margin-bottom: -10px; /* Acerca el texto de guía al input */
+}
+
+.formulario input {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.formulario input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.formulario input:focus {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: #ffffff;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.formulario button {
+    margin-top: 1rem;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #000000;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+}
+
+.formulario button:hover {
+    background: #e0e0e0;
+    transform: translateY(-3px); /* Pequeño salto al pasar el ratón */
+}
+
+/* ========================================= */
+/* IMÁGENES                                  */
+/* ========================================= */
+.contenedor-imagen {
+    width: 100%;
+    margin: 1.5rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+.imagen-placeholder {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    /* Estilos por si la imagen aún no se carga */
+    min-height: 80px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+/* ========================================= */
+/* ANIMACIÓN DE DESVANECIMIENTO (SCROLL)     */
+/* ========================================= */
+.fade-element {
+    opacity: 0;
+    transform: translateY(40px); /* Empieza un poco más abajo */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-element.visible {
+    opacity: 1;
+    transform: translateY(0); /* Sube a su posición original */
+}
+
+/* ========================================= */
+/* DISEÑO RESPONSIVO (MÓVILES)               */
+/* ========================================= */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.2rem;
+    }
+    
+    .login-box {
+        padding: 2rem 1.5rem;
+    }
+    
+    .contenedor-principal {
+        padding: 1rem;
+    }
+}
+
+/* ========================================= */
+/* MENSAJE DE AYUDA FLOTANTE (ESQUINA)       */
+/* ========================================= */
+.mensaje-esquina {
+    position: fixed;
+    bottom: 20px;
+    right: 20px; /* Cambia a "left: 20px;" si lo prefieres en la esquina izquierda */
+    background: rgba(255, 255, 255, 0.08); /* Estilo de cristal */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 15px;
+    max-width: 260px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    z-index: 100;
+    text-align: center;
+}
+
+.mensaje-esquina p {
+    color: #e0e0e0;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.mensaje-esquina a {
+    color: #ffcc00;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 0.9rem;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.mensaje-esquina a:hover {
+    color: #ffffff;
+}
+
+/* Ocultar en pantallas muy pequeñas para no tapar el login, o ajustarlo */
+@media (max-width: 480px) {
+    .mensaje-esquina {
+        bottom: 10px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+}

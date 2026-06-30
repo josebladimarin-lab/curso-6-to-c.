@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería 6to C</title>
+    <link rel="stylesheet" href="estilos/img.css">
+</head>
+<body>
+
+    <a href="bienvenido.html" class="btn-volver">⬅ Volver al inicio</a>
+
+    <header class="cabecera-galeria">
+        <h1>NUESTRAS IMÁGENES</h1>
+        <p>Los mejores recuerdos del 6to C</p>
+    </header>
+
+    <main class="galeria-grid">
+        
+        <div class="cuadro-imagen">
+            <img src="img/1.jpeg" alt="Recuerdo 1">
+        </div>
+
+        <div class="cuadro-imagen">
+            <img src="img/6to C f J.jpeg" alt="Recuerdo 2">
+        </div>
+
+        <div class="cuadro-imagen">
+            <img src="img/3.jpeg" alt="Recuerdo 3">
+        </div>
+
+        <div class="cuadro-imagen">
+            <img src="img/4.jpeg" alt="Recuerdo 4">
+        </div>
+
+        <div class="cuadro-imagen">
+            <img src="img/5.jpeg" alt="Recuerdo 5">
+        </div>
+
+        <div class="cuadro-imagen">
+            <img src="img/6.jpeg" alt="Recuerdo 6">
+        </div>
+
+        <div class="cuadro-imagen">
+            <img src="img/7.jpeg" alt="Recuerdo 7">
+        </div>
+
+        <div class="cuadro-imagen">
+            <img src="img/8.jpeg" alt="Recuerdo 8">
+        </div>
+
+        <div class="cuadro-imagen">
+            <img src="img/9.jpeg" alt="Recuerdo 9">
+        </div>
+
+        <div class="cuadro-imagen">
+            <img src="img/10.jpeg" alt="Recuerdo 10">
+        </div>
+
+        <div class="cuadro-imagen">
+            <img src="img/11.jpeg" alt="Recuerdo 11">
+        </div>
+
+        <div class="cuadro-imagen">
+            <img src="img/12.jpeg" alt="Recuerdo 12">
+
+        </div>
+
+        <div class="cuadro-imagen">
+            <img src="img/13.jpeg" alt="Recuerdo 13">
+        </div>
+
+        <div class="cuadro-imagen">
+            <img src="img/14.jpeg" alt="Recuerdo 14">
+        </div>       
+
+        <div class="cuadro-imagen">
+            <img src="img/16.jpeg" alt="Recuerdo 16">
+        </div>
+
+        <div class="cuadro-imagen">
+            <img src="img/17.jpeg" alt="Recuerdo 17">
+        </div>
+
+        <div class="cuadro-imagen">
+            <img src="img/18.jpeg" alt="Recuerdo 18">
+        </div>
+
+        <div class="cuadro-imagen">
+            <img src="img/19.jpeg" alt="Recuerdo 19">
+        </div>
+
+        <div class="cuadro-imagen">
+            <img src="img/20.jpeg" alt="Recuerdo 20">
+        </div>
+
+        <div class="cuadro-imagen">
+            <img src="img/21.jpeg" alt="Recuerdo 21">
+        </div>
+
+        <div class="cuadro-imagen">
+            <img src="img/22.jpeg" alt="Recuerdo 22">
+        </div>
+
+    </main>
+
+    <div id="cuadro-flotante">
+        ¿Quieres añadir más?<br>
+        escribe al: <strong>+591 72511274</strong>
+    </div>
+
+    <div id="visor-flotante" class="oculto">
+        <button id="cerrar-visor">&times;</button>
+        <img id="imagen-ampliada" src="" alt="Imagen ampliada">
+    </div>
+
+    <script>
+        // --- 1. CUADRO FLOTANTE QUE DESAPARECE CON EL SCROLL ---
+        const cuadroFlotante = document.getElementById('cuadro-flotante');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                cuadroFlotante.classList.add('oculto');
+            } else {
+                cuadroFlotante.classList.remove('oculto');
+            }
+        });
+
+        // --- 2. NUEVO: LÓGICA PARA ABRIR LAS IMÁGENES AL TOCARLAS ---
+        const imagenes = document.querySelectorAll('.cuadro-imagen img');
+        const visorFlotante = document.getElementById('visor-flotante');
+        const imagenAmpliada = document.getElementById('imagen-ampliada');
+        const btnCerrarVisor = document.getElementById('cerrar-visor');
+
+        // Escuchamos el clic/toque en cada imagen de la galería
+        imagenes.forEach(img => {
+            img.addEventListener('click', () => {
+                imagenAmpliada.src = img.src; // Le pasa la foto que tocaste al visor
+                visorFlotante.classList.remove('oculto'); // Lo muestra en pantalla
+            });
+        });
+
+        // Escuchamos el clic en la "X" para cerrar
+        btnCerrarVisor.addEventListener('click', () => {
+            visorFlotante.classList.add('oculto');
+        });
+    </script>
+
+</body>
+</html>
